@@ -1,18 +1,26 @@
 import {
     Extension,
+    Vector,
+    Event,
+    Pack,
     Block,
+    Thing,
+    Type,
+    Project,
+    Variable,
 } from "dalkak";
 
 export default new Extension({
-    name: "extension name",
-    color: 0xDE5C04, // Background color of blocks
-    blocks: {
-        block: new Block({
-            name: "block name",
-            template: "{example (input)}",
-            func: ({input}, project) => {
-
-            }
-        }),
-    },
+    name: "basic",
+    types: {
+        number: Type.typeof("number"),
+        Vector: Type.fromConstructor(Vector),
+        Event: Type.fromConstructor(Event),
+        Pack: Type.fromConstructor(Pack),
+        Block: Type.fromConstructor(Block),
+        Thing: Type.fromConstructor(Thing),
+        Type: Type.fromConstructor(Type),
+        Project: Type.fromConstructor(Project),
+        Variable: Type.fromConstructor(Variable),
+    }
 });
