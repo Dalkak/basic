@@ -15,12 +15,27 @@ export default new Extension({
     types: {
         number: Type.typeof("number"),
         Vector: Type.fromConstructor(Vector),
-        Event: Type.fromConstructor(Event),
+        Event: Type.fromConstructor(
+            Event, 
+            (data, project) => project.events.value[data]
+        ),
         Pack: Type.fromConstructor(Pack),
-        Block: Type.fromConstructor(Block),
-        Thing: Type.fromConstructor(Thing),
-        Type: Type.fromConstructor(Type),
+        Block: Type.fromConstructor(
+            Block,
+            (data, project) => project.pack.blocks.value[data]
+        ),
+        Thing: Type.fromConstructor(
+            Thing,
+            (data, project) => project.thingGroup.children.find(thing => thing.name == data)
+        ),
+        Type: Type.fromConstructor(
+            Type,
+            (data, project) => project.pack.types.value[data]
+        ),
         Project: Type.fromConstructor(Project),
-        Variable: Type.fromConstructor(Variable),
+        Variable: Type.fromConstructor(
+            Variable,
+            (data, project) => project.variables.value[data]
+        ),
     }
 });
