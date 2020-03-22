@@ -9,6 +9,7 @@ import {
     Project,
     Variable,
 } from "dalkak";
+import { Local } from "dalkak/dist/src/Local";
 
 export default new Extension({
     name: "basic",
@@ -35,7 +36,7 @@ export default new Extension({
         Project: Type.fromConstructor(Project),
         Variable: Type.fromConstructor(
             Variable,
-            (data, project) => project.variables.value[data]
+            (data, project, local = new Local(project.variables)) => local.getVariable(data)
         ),
     }
 });
