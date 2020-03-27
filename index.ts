@@ -8,13 +8,13 @@ import {
     Type,
     Project,
     Variable,
+    Local,
 } from "dalkak";
-import { Local } from "dalkak/dist/src/Local";
 
 export default new Extension({
     name: "basic",
     types: {
-        number: Type.typeof("number"),
+        number: Type.typeof("number", Number),
         Vector: Type.fromConstructor(Vector),
         Event: Type.fromConstructor(
             Event, 
